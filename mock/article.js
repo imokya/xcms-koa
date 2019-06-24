@@ -16,8 +16,6 @@ for (let i = 0; i < count; i++) {
     content_short: 'mock data',
     content: baseContent,
     forecast: '@float(0, 100, 2, 2)',
-    importance: '@integer(1, 3)',
-    'type|1': ['CN', 'US', 'JP', 'EU'],
     'status|1': ['published', 'draft', 'deleted'],
     display_time: '@datetime',
     comment_disabled: true,
