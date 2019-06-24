@@ -1,4 +1,4 @@
-# xing-CMS
+# xing-cms
 
-> a CMS starter based on vue admin 
+### a cms starter based on vue admin 
 
