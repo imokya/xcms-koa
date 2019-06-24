@@ -51,22 +51,22 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/content',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/content/article',
+    name: 'Content',
+    meta: { title: '内容管理', icon: 'guide' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'article',
+        name: 'article',
+        component: () => import('@/views/article/index'),
+        meta: { title: '文章管理', icon: 'table' }
       },
       {
         path: 'tree',
