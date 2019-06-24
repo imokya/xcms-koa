@@ -1,4 +1,4 @@
 # xing-cms
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+> a cms starter based on vue admin 
 
