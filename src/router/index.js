@@ -58,19 +58,23 @@ export const constantRoutes = [
   {
     path: '/content',
     component: Layout,
-    redirect: '/content/article',
     name: 'Content',
     meta: { title: '内容管理', icon: 'guide' },
     children: [
       {
-        path: 'article',
-        name: 'article',
+        path: 'index',
+        name: 'List',
+        component: () => import('@/views/article/index'),
+        meta: { title: '文章管理', icon: 'table' }
+      },
+      {
+        path: 'add',
+        name: 'Add',
         component: () => import('@/views/article/index'),
         meta: { title: '文章管理', icon: 'table' }
       }
     ]
   },
-
   {
     path: '/user',
     component: Layout,
