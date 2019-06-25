@@ -22,3 +22,34 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function find(query) {
+  return request({
+    url: '/user',
+    method: 'get',
+    params: query
+  })
+}
+
+export function del(params) {
+  return request({
+    url: `/user/${params.id}`,
+    method: 'delete'
+  })
+}
+
+export function create(data) {
+  return request({
+    url: '/user',
+    method: 'post',
+    data
+  })
+}
+
+export function update(data) {
+  return request({
+    url: `/user/${data._id}`,
+    method: 'patch',
+    data
+  })
+}
