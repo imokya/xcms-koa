@@ -87,10 +87,10 @@
         style="width: 400px; margin-left:50px;"
       >
         <el-form-item label="用户名" prop="name">
-          <el-input v-model="temp.name" />
+          <el-input v-model="temp.name" autocomplete="off" />
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input v-model="temp.pass" show-password />
+          <el-input v-model="temp.pass" autocomplete="off" show-password />
         </el-form-item>
         <el-form-item label="角色" prop="roles">
           <el-checkbox-group v-model="temp.roles">
