@@ -226,7 +226,7 @@ export default {
     createData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
-          create(this.temp).then((response) => {
+          create(this.temp).then(response => {
             this.getList()
             this.dialogFormVisible = false
             this.$notify({
@@ -253,7 +253,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          update(this.temp).then((response) => {
+          update(this.temp).then(response => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)
