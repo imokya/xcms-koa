@@ -58,7 +58,7 @@
 import Tinymce from '@/components/Tinymce'
 import MDinput from '@/components/MDinput'
 import Sticky from '@/components/Sticky'
-import { fetchArticle } from '@/api/article'
+import { fetchArticle, createArticle, updateArticle } from '@/api/article'
 import Warning from './Warning'
 
 const defaultForm = {
@@ -149,23 +149,42 @@ export default {
       document.title = `${title} - ${this.postForm._id}`
     },
     submitForm() {
-      console.log(this.postForm)
-      /* this.$refs.postForm.validate(valid => {
+      this.$refs.postForm.validate(valid => {
         if (valid) {
-          createArticle(this.postForm).then((response) => {
-            this.$notify({
-              title: '成功',
-              message: '发布成功',
-              type: 'success',
-              duration: 2000
-            })
-            this.loading = false
-          })
-          this.loading = true
+          if (!this.isEdit) {
+            this.doCreateArticle()
+          } else {
+            this.doUpdateArticle()
+          }
         } else {
           return false
         }
-      }) */
+      })
+    },
+    doCreateArticle() {
+      createArticle(this.postForm).then((response) => {
+        this.$notify({
+          title: '成功',
+          message: '发布成功',
+          type: 'success',
+          duration: 2000
+        })
+        this.loading = false
+      })
+      this.loading = true
+    },
+    doUpdateArticle() {
+      const id = this.$route.params && this.$route.params.id
+      updateArticle(id, this.postForm).then((response) => {
+        this.$notify({
+          title: '成功',
+          message: '更新成功',
+          type: 'success',
+          duration: 2000
+        })
+        this.loading = false
+      })
+      this.loading = true
     },
     draftForm() {
       if (this.postForm.content.length === 0 || this.postForm.title.length === 0) {
