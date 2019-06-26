@@ -94,8 +94,7 @@
         </el-form-item>
         <el-form-item label="角色" prop="roles">
           <el-checkbox-group v-model="temp.roles">
-            <el-checkbox label="admin" name="roles" />
-            <el-checkbox label="editor" name="roles" />
+            <el-checkbox v-for="role in roles" :key="role.id" :label="role.name" name="roles" />
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="日期" prop="time">
@@ -122,6 +121,7 @@
 
 <script>
 import { find, del, create, update } from '@/api/user'
+import { getRoles } from '@/api/role'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -136,6 +136,7 @@ export default {
       list: null,
       total: 0,
       listLoading: true,
+      roles: [],
       listQuery: {
         page: 1,
         limit: 10
@@ -179,8 +180,14 @@ export default {
   },
   created() {
     this.getList()
+    this.getRoles()
   },
   methods: {
+    getRoles() {
+      getRoles().then(response => {
+        this.roles = response.data
+      })
+    },
     getList() {
       this.listLoading = true
       find(this.listQuery).then(response => {

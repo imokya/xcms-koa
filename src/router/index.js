@@ -31,6 +31,19 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
+
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
+
   {
     path: '/login',
     component: () => import('@/views/login/index'),
@@ -40,6 +53,12 @@ export const constantRoutes = [
   {
     path: '/404',
     component: () => import('@/views/404'),
+    hidden: true
+  },
+
+  {
+    path: '/401',
+    component: () => import('@/views/error-page/401'),
     hidden: true
   },
 
@@ -74,18 +93,6 @@ export const constantRoutes = [
         meta: { title: '文章管理', icon: 'table' }
       }
     ]
-  },
-  {
-    path: '/user',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'User',
-        component: () => import('@/views/user/index'),
-        meta: { title: '用户管理', icon: 'user' }
-      }
-    ]
   }
 ]
 
@@ -94,7 +101,37 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  // 404 page must be placed at the end !!!
+
+  {
+    path: '/user',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'User',
+        component: () => import('@/views/user/index'),
+        meta: { title: '用户管理', icon: 'user', roles: ['admin'] }
+      }
+    ]
+  },
+
+  {
+    path: '/permission',
+    component: Layout,
+    name: 'Permission',
+    children: [
+      {
+        path: 'role',
+        component: () => import('@/views/permission/role'),
+        name: 'RolePermission',
+        meta: {
+          icon: 'lock',
+          title: '权限管理',
+          roles: ['admin']
+        }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
