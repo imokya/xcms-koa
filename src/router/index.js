@@ -75,22 +75,30 @@ export const constantRoutes = [
   },
 
   {
-    path: '/content',
+    path: '/article',
+    redirect: '/article/index',
     component: Layout,
     name: 'Content',
     meta: { title: '内容管理', icon: 'guide' },
     children: [
       {
+        path: 'edit/:id',
+        component: () => import('@/views/article/edit'),
+        name: 'Edit',
+        meta: { title: '编辑文章', activeMenu: '/article/index' },
+        hidden: true
+      },
+      {
         path: 'index',
         name: 'List',
         component: () => import('@/views/article/index'),
-        meta: { title: '文章管理', icon: 'table' }
+        meta: { title: '文章列表', icon: 'list' }
       },
       {
         path: 'add',
         name: 'Add',
-        component: () => import('@/views/article/index'),
-        meta: { title: '文章管理', icon: 'table' }
+        component: () => import('@/views/article/create'),
+        meta: { title: '添加文章', icon: 'edit' }
       }
     ]
   }

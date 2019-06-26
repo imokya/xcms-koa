@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'xing cms',
+  title: 'XING CMS',
 
   /**
    * @type {boolean} true | false

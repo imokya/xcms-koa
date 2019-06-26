@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(query) {
   return request({
-    url: '/articles/list',
+    url: '/article',
     method: 'get',
     params: query
   })
@@ -10,32 +10,30 @@ export function fetchList(query) {
 
 export function fetchArticle(id) {
   return request({
-    url: '/articles/detail',
-    method: 'get',
-    params: { id }
-  })
-}
-
-export function fetchPv(pv) {
-  return request({
-    url: '/articles/pv',
-    method: 'get',
-    params: { pv }
+    url: `/article/${id}`,
+    method: 'get'
   })
 }
 
 export function createArticle(data) {
   return request({
-    url: '/articles/create',
+    url: '/article',
     method: 'post',
     data
   })
 }
 
-export function updateArticle(data) {
+export function updateArticle(id, data) {
   return request({
-    url: '/articles/update',
-    method: 'post',
+    url: `/article/${id}`,
+    method: 'patch',
     data
+  })
+}
+
+export function deleteArticle(id) {
+  return request({
+    url: `/article/${id}`,
+    method: 'delete'
   })
 }
