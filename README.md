@@ -1,4 +1,4 @@
-# xing-cms
+# xAdmin
 
 > a cms starter based on vue-element-admin and koa
 
